@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import {select, Store} from '@ngrx/store';
+import {AppState} from '../app.state';
 
 @Component({
   selector: 'app-banana',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BananaComponent implements OnInit {
 
-  constructor() { }
+  title = 'My Ngrx Banana App';
+  banana$: Observable<any>;
+
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.newBanana();
+    this.banana$ = this.store.pipe(
+    );
+  }
+
+  newBanana() {
+
   }
 
 }

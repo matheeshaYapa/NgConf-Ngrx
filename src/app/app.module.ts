@@ -7,6 +7,9 @@ import { BananaComponent } from './banana/banana.component';
 import { HelloComponent } from './hello/hello.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material';
+import {StoreModule} from '@ngrx/store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import { initialState, reducer} from './app.state';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,11 @@ import {MatCardModule} from '@angular/material';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    StoreModule.forRoot(reducer, {initialState}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
